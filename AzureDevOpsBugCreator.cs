@@ -34,14 +34,31 @@ namespace SeleniumTests
         private string azureDevOpsUrl;
         private string project;
         private string personalAccessToken;
-
         public AzureDevOpsBugCreator()
         {
+            try
+            {
             var config = File.ReadAllText("appsettings.json");
             dynamic settings = JsonConvert.DeserializeObject(config);
             azureDevOpsUrl = settings.AzureDevOpsUrl;
             project = settings.Project;
             personalAccessToken = settings.PersonalAccessToken;
+            }
+            catch (FileNotFoundException ex)
+            {
+            Console.WriteLine("Configuration file not found: " + ex.Message);
+            throw;
+            }
+            catch (JsonException ex)
+            {
+            Console.WriteLine("Error parsing configuration file: " + ex.Message);
+            throw;
+            }
+            catch (Exception ex)
+            {
+            Console.WriteLine("Unexpected error loading configuration: " + ex.Message);
+            throw;
+            }
         }
 
         public void CreateBug(string bugTitle)
