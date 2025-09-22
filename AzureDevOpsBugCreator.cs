@@ -4,6 +4,29 @@ using RestSharp;
 using System;
 using System.IO;
 
+/// <summary>
+/// Provides functionality to create bug work items in Azure DevOps using REST API.
+/// </summary>
+public class AzureDevOpsBugCreator
+{
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AzureDevOpsBugCreator"/> class.
+    /// Loads Azure DevOps configuration from the appsettings.json file.
+/// </summary>
+    public AzureDevOpsBugCreator()
+    {
+        // ...
+    }
+
+    /// <summary>
+    /// Creates a new bug work item in Azure DevOps with the specified title.
+    /// </summary>
+    /// <param name="bugTitle">The title of the bug to be created.</param>
+    public void CreateBug(string bugTitle)
+    {
+        // ...
+    }
+}
 namespace SeleniumTests
 {
     public class AzureDevOpsBugCreator
